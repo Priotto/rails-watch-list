@@ -1,0 +1,26 @@
+<h1>My list details:</h1>
+<h2><%= @list.name %></h2>
+<h2>Reviews:</h2>
+<% @list.bookmarks.each do |bookmark| %>
+  <%= bookmark.comment %>
+  <%= bookmark.movie.title %>
+<% end %>
+<%= link_to "Create a new comment",  new_list_bookmark_path(@list)%>
+
+
+<div class = "container d-flex cards">
+  <% @list.bookmarks.each do |bookmark| %>
+    <div class="card-trip">
+      <img src="<%= bookmark.movie.poster_url %>" />
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= bookmark.movie.title %></h2>
+          <p><%= bookmark.movie.overview %></p>
+        </div>
+        <%= link_to  bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Do you want to destroy this article?"} do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
