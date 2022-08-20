@@ -55,12 +55,17 @@
 }
 
 
-
-
 .card-trip {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-trip-infos{
+  display: flex;
+  flex-direction: column;
 }
 
 .card-trip > img {
@@ -86,7 +91,6 @@
   padding: 16px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
   position: relative;
 }
 
@@ -95,4 +99,36 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.star-yellow {
+  color: #FFDF00;
+}
+
+.dot{
+  font-size: 0.25rem;
+}
+
+.card-title-text p{
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: 1rem
+}
+
+.title-rating{
+  display: flex;
+  justify-items: center;
+  text-align: center;
+  align-items: center;
+  vertical-align: middle;
+
+  h1{
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+}
+
+.bottom-card-info{
+  align-items: center;
 }

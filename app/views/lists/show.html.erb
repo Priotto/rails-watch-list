@@ -1,26 +1,36 @@
-<h1>My list details:</h1>
-<h2><%= @list.name %></h2>
-<h2>Reviews:</h2>
-<% @list.bookmarks.each do |bookmark| %>
-  <%= bookmark.comment %>
-  <%= bookmark.movie.title %>
-<% end %>
-<%= link_to "Create a new comment",  new_list_bookmark_path(@list)%>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);">
+  <div class="container d-flex justify-content-center">
+    <h1 id = "list-names-size"><%= @list.name %></h1>
+  </div>
+</div>
 
 
-<div class = "container d-flex cards">
+<div class = "container cards py-5">
   <% @list.bookmarks.each do |bookmark| %>
     <div class="card-trip">
       <img src="<%= bookmark.movie.poster_url %>" />
-      <div class="card-trip-infos">
-        <div>
-          <h2><%= bookmark.movie.title %></h2>
+      <div class="card-trip-infos justify-content-between flex-grow-1">
+        <div class = card-title-text>
+          <div class = "title-rating d-flex gap-1 pb-1">
+            <h1><%= bookmark.movie.title %></h1>
+            <i class="fa-solid fa-circle dot"></i>
+            <h2><%= bookmark.movie.rating %></h2>
+            <i class="fa-solid fa-star star-yellow"></i>
+          </div>
           <p><%= bookmark.movie.overview %></p>
         </div>
-        <%= link_to  bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Do you want to destroy this article?"} do %>
-          <i class="fa-solid fa-trash-can"></i>
-        <% end %>
+        <div class = "bottom-card-info d-flex justify-content-between pt-4">
+          <div class = "d-flex gap-1">
+          <i class="fa-solid fa-quote-left"></i>
+          <h2><%= bookmark.comment %></h2>
+          </div>
+          <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Do you want to destroy this article?"} do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>
 </div>
+
+<%= link_to "Create a new comment",  new_list_bookmark_path(@list)%>
